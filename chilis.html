@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chili's: Where Freedom Sizzles</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Impact:wght@400&family=Arial:wght@400;700&family=Georgia:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #B22234, #FFFFFF, #3C3B6E);
+            background-size: 400% 400%;
+            animation: patrioticGradient 8s ease-in-out infinite;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        @keyframes patrioticGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .background-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent);
+            background-repeat: repeat;
+            background-size: 100px 100px;
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .slide {
+            display: none;
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            animation: slideIn 1s ease-out;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 5px solid #B22234;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,215,0,0.1), transparent);
+            animation: shine 3s ease-in-out infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        }
+        
+        @keyframes slideIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(50px) scale(0.9); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+        
+        .sizzle-effect {
+            animation: sizzle 2s ease-in-out infinite;
+        }
+        
+        @keyframes sizzle {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                filter: hue-rotate(0deg);
+            }
+            25% { 
+                transform: scale(1.02) rotate(0.5deg);
+                filter: hue-rotate(10deg);
+            }
+            75% { 
+                transform: scale(0.98) rotate(-0.5deg);
+                filter: hue-rotate(-10deg);
+            }
+        }
+        
+        h1 {
+            font-family: 'Impact', Arial, sans-serif;
+            font-size: 3.5rem;
+            color: #B22234;
+            text-shadow: 3px 3px 0px #FFD700, 6px 6px 0px #3C3B6E;
+            margin-bottom: 20px;
+            animation: titlePulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            color: #3C3B6E;
+            text-shadow: 2px 2px 0px #FFD700;
+            margin-bottom: 30px;
+            font-family: 'Impact', Arial, sans-serif;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            color: #B22234;
+            margin-bottom: 20px;
+            text-decoration: underline;
+            text-decoration-color: #FFD700;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+        
+        p, li {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #2c2c2c;
+        }
+        
+        ul {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        li::before {
+            content: '🌶️';
+            position: absolute;
+            left: 0;
+            animation: pepper-bounce 1s ease-in-out infinite;
+        }
+        
+        @keyframes pepper-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, #FFD700, #FFF);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(45deg, #B22234, #8B0000);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .comparison-table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #B22234;
+            transition: all 0.3s ease;
+        }
+        
+        .comparison-table tr:hover {
+            background: rgba(255, 215, 0, 0.3);
+            transform: scale(1.02);
+        }
+        
+        .chilis-row {
+            background: linear-gradient(45deg, #FFD700, #FFF5DC);
+            font-weight: bold;
+            animation: glowRow 2s ease-in-out infinite;
+        }
+        
+        @keyframes glowRow {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+        }
+        
+        .testimonial {
+            background: rgba(255, 215, 0, 0.2);
+            border-left: 5px solid #B22234;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            font-style: italic;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            color: rgba(178, 34, 52, 0.3);
+            position: absolute;
+            top: -10px;
+            left: 10px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #3C3B6E;
+            margin-top: 10px;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+        
+        @media (max-width: 768px) {
+            .navigation {
+                bottom: 15px;
+                gap: 10px;
+            }
+        }
+        
+        .nav-btn {
+            background: linear-gradient(45deg, #B22234, #8B0000);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+                border-radius: 20px;
+            }
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            background: linear-gradient(45deg, #FF4444, #B22234);
+        }
+        
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(178, 34, 52, 0.9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            z-index: 100;
+        }
+        
+        .freedom-text {
+            color: #B22234;
+            font-weight: bold;
+            text-transform: uppercase;
+            animation: freedomGlow 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes freedomGlow {
+            0%, 100% { 
+                text-shadow: 0 0 10px rgba(178, 34, 52, 0.5);
+                transform: scale(1);
+            }
+            50% { 
+                text-shadow: 0 0 20px rgba(178, 34, 52, 0.8);
+                transform: scale(1.02);
+            }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #3C3B6E;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .presenter {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .flag-decoration {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            animation: flag-wave 2s ease-in-out infinite;
+        }
+        
+        @keyframes flag-wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+        }
+        
+        .emphasis {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            color: #2c2c2c;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+        
+        .call-to-action {
+            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            animation: callToActionPulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes callToActionPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            }
+            50% { 
+                transform: scale(1.02);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            }
+        }
+        
+        .sizzle-sound-btn {
+            background: #FFD700;
+            border: 3px solid #B22234;
+            color: #B22234;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .sizzle-sound-btn:hover {
+            background: #B22234;
+            color: #FFD700;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="background-stars"></div>
+    
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">10</span>
+    </div>
+    
+    <!-- Slide 1: Title -->
+    <div class="container">
+        <div class="slide active sizzle-effect">
+            <div class="flag-decoration">🇺🇸</div>
+            <h1>Chili's: Where <span class="freedom-text">Freedom</span> Sizzles</h1>
+            <p class="subtitle">An educational journey into the heart of American casual dining</p>
+            <p class="presenter">Presented by: Someone Who Cares Too Much</p>
+            <button class="sizzle-sound-btn" onclick="playPatrioticSound()">🔥 Feel the Sizzle 🔥</button>
+        </div>
+        
+        <!-- Slide 2: What Is Chili's? -->
+        <div class="slide">
+            <div class="flag-decoration">🌶️</div>
+            <h2>What Is Chili's?</h2>
+            <ul>
+                <li>Founded in 1975 by a visionary who asked, <em>"What if we sold beer and nachos in the same building?"</em></li>
+                <li>Now has over <span class="emphasis">1,600 locations</span>, all with identical furniture and unwavering commitment to flavor mediocrity.</li>
+                <li>Serves food that tastes like <span class="freedom-text">America</span>: slightly spicy, heavily processed, emotionally nostalgic.</li>
+            </ul>
+            <p style="margin-top: 30px; font-style: italic; color: #B22234;">🇺🇸 An American flag overlaying a sizzling skillet lives in our hearts 🇺🇸</p>
+        </div>
+        
+        <!-- Slide 3: Comparison Table -->
+        <div class="slide">
+            <div class="flag-decoration">⚔️</div>
+            <h2>Chili's vs. Other Chains</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Restaurant</th>
+                        <th>Vibe</th>
+                        <th>Signature Dish</th>
+                        <th>Number of Regrets</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Applebee's</td>
+                        <td>Divorce</td>
+                        <td>Microwave Lasagna</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td>TGI Friday's</td>
+                        <td>Chaos</td>
+                        <td>Fried Sadness</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>Olive Garden</td>
+                        <td>Delusion</td>
+                        <td>Endless Breadsticks</td>
+                        <td>7</td>
+                    </tr>
+                    <tr class="chilis-row">
+                        <td><strong>Chili's</strong></td>
+                        <td><strong class="freedom-text">Honor</strong></td>
+                        <td><strong>Baby Back Ribs</strong></td>
+                        <td><strong>Zero</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 1rem; font-style: italic; margin-top: 15px;">
+                *Chart peer-reviewed by a guy named Randy who's eaten at all of them this week.
+            </p>
+        </div>
+        
+        <!-- Slide 4: Triple Dipper -->
+        <div class="slide sizzle-effect">
+            <div class="flag-decoration">🍽️</div>
+            <h2>The Triple Dipper</h2>
+            <p style="font-size: 1.4rem; margin-bottom: 25px;">Proof that the <span class="freedom-text">Founding Fathers</span> believed in combo platters.</p>
+            <h3>Customize with:</h3>
+            <ul>
+                <li>Boneless wings (the <span class="emphasis">gateway drug</span>)</li>
+                <li>Chicken crispers (golden <span class="freedom-text">freedom</span> nuggets)</li>
+                <li>Southwestern eggrolls (cultural fusion at its finest)</li>
+            </ul>
+            <p style="margin-top: 25px; font-size: 1.3rem;">Served with enough sauce to <span class="emphasis">end a cold war</span>.</p>
+            <div style="background: #FFD700; padding: 20px; border-radius: 15px; margin-top: 20px; border: 3px solid #B22234;">
+                <strong style="font-size: 1.4rem; color: #B22234;">
+                    "Why choose one cholesterol delivery system when you could choose three?"
+                </strong>
+            </div>
+        </div>
+        
+        <!-- Slide 5: The Ambiance -->
+        <div class="slide">
+            <div class="flag-decoration">✨</div>
+            <h2>The Ambiance™</h2>
+            <ul>
+                <li>Decor designed by someone who <span class="emphasis">once heard about Texas</span></li>
+                <li>Music playing: a legally distinct country-pop playlist from <span class="freedom-text">2009</span></li>
+                <li>Lighting: Soft, flattering, <span class="emphasis">vaguely orange</span></li>
+                <li>Scent: Fried onions, bar rag, and <span class="freedom-text">hope</span></li>
+            </ul>
+        </div>
+        
+        <!-- Slide 6: Cultural Legacy -->
+        <div class="slide sizzle-effect">
+            <div class="flag-decoration">🎵</div>
+            <h2>Chili's Cultural Legacy</h2>
+            <ul>
+                <li>The Baby Back Ribs jingle is basically the <span class="emphasis">"Bohemian Rhapsody" of the suburbs</span></li>
+                <li>Their commercials taught us what <span class="freedom-text">family feels like</span> (even if our own didn't)</li>
+                <li>First place many of us discovered <span class="emphasis">margaritas as a coping mechanism</span></li>
+            </ul>
+        </div>
+        
+        <!-- Slide 7: Testimonials -->
+        <div class="slide">
+            <div class="flag-decoration">💬</div>
+            <h2>Testimonials</h2>
+            
+            <div class="testimonial">
+                I proposed to my wife at Chili's. She said yes before the check came.
+                <div class="testimonial-author">– A true American hero</div>
+            </div>
+            
+            <div class="testimonial">
+                I was born in a Chili's parking lot. It's who I am.
+                <div class="testimonial-author">– Someone's uncle probably</div>
+            </div>
+            
+            <div class="testimonial">
+                Chili's didn't just fill me up. It completed me.
+                <div class="testimonial-author">– A man who ate the entire skillet queso by himself</div>
+            </div>
+        </div>
+        
+        <!-- Slide 8: Countering the Haters -->
+        <div class="slide">
+            <div class="flag-decoration">🛡️</div>
+            <h2>Countering the Haters</h2>
+            
+            <div style="text-align: left; max-width: 900px; margin: 0 auto;">
+                <div style="background: rgba(255,0,0,0.1); padding: 20px; margin: 20px 0; border-radius: 10px; border-left: 5px solid #B22234;">
+                    <strong>Claim:</strong> "It's just microwaved food."<br>
+                    <strong class="freedom-text">Response:</strong> "So is Thanksgiving at Grandma's. <span class="emphasis">Grow up.</span>"
+                </div>
+                
+                <div style="background: rgba(255,0,0,0.1); padding: 20px; margin: 20px 0; border-radius: 10px; border-left: 5px solid #B22234;">
+                    <strong>Claim:</strong> "There are better places."<br>
+                    <strong class="freedom-text">Response:</strong> "Then why do I feel <span class="emphasis">alive</span> when the sizzle platter hits the table?"
+                </div>
+                
+                <div style="background: rgba(255,0,0,0.1); padding: 20px; margin: 20px 0; border-radius: 10px; border-left: 5px solid #B22234;">
+                    <strong>Claim:</strong> "It's tacky."<br>
+                    <strong class="freedom-text">Response:</strong> "So is <span class="freedom-text">freedom</span>. <span class="emphasis">That's the point.</span>"
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 9: Call to Action -->
+        <div class="slide sizzle-effect">
+            <div class="flag-decoration">📢</div>
+            <h2>Call to Action</h2>
+            
+            <div class="call-to-action">
+                <h3 style="color: white; margin-bottom: 20px;">Your Mission, Should You Choose to Accept It:</h3>
+                <ul style="color: white; font-size: 1.4rem;">
+                    <li><strong>Eat at Chili's.</strong></li>
+                    <li><strong>Bring someone you care about.</strong></li>
+                    <li><strong>Order something you can't pronounce.</strong></li>
+                    <li><strong>Leave with heartburn and patriotism.</strong></li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Slide 10: Thank You -->
+        <div class="slide sizzle-effect">
+            <div class="flag-decoration">🇺🇸</div>
+            <h1 style="font-size: 2.5rem;">Thank You</h1>
+            <div style="background: linear-gradient(45deg, #B22234, #FFD700); padding: 30px; border-radius: 20px; margin: 30px 0; color: white;">
+                <h2 style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                    Chili's: Bold Flavor. Real People. Microwave Optional.
+                </h2>
+            </div>
+            <p style="font-size: 1.3rem; font-style: italic; margin-top: 30px;">
+                Any questions? (If so, please direct them to the nearest bar booth and ask the server with the eyebrow ring.)
+            </p>
+            <button class="sizzle-sound-btn" onclick="playVictorySound()" style="margin-top: 30px; font-size: 1.2rem;">
+                🎉 FREEDOM ACHIEVED 🎉
+            </button>
+        </div>
+    </div>
+    
+    <div class="navigation">
+        <button class="nav-btn" onclick="previousSlide()">← Previous</button>
+        <button class="nav-btn" onclick="nextSlide()">Next →</button>
+    </div>
+    
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total-slides').textContent = totalSlides;
+        
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            document.getElementById('current-slide').textContent = currentSlide + 1;
+            
+            // Add sizzle effect to random slides
+            if (Math.random() > 0.5) {
+                slides[currentSlide].classList.add('sizzle-effect');
+            }
+        }
+        
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+        
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+        
+        // Keyboard controls
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                previousSlide();
+            }
+        });
+        
+        // Patriotic sound effects (visual feedback since we can't actually play sound)
+        function playPatrioticSound() {
+            const btn = event.target;
+            btn.style.animation = 'none';
+            btn.innerHTML = '🔥 SIZZLING! 🔥';
+            btn.style.background = '#B22234';
+            btn.style.color = '#FFD700';
+            btn.style.transform = 'scale(1.2)';
+            
+            setTimeout(() => {
+                btn.innerHTML = '🔥 Feel the Sizzle 🔥';
+                btn.style.background = '#FFD700';
+                btn.style.color = '#B22234';
+                btn.style.transform = 'scale(1)';
+            }, 1500);
+        }
+        
+        function playVictorySound() {
+            const btn = event.target;
+            btn.innerHTML = '🇺🇸 AMERICA! 🇺🇸';
+            btn.style.background = 'linear-gradient(45deg, #B22234, #3C3B6E)';
+            btn.style.color = '#FFD700';
+            btn.style.transform = 'scale(1.3)';
+            
+            // Create confetti effect
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createConfetti();
+                }, i * 100);
+            }
+            
+            setTimeout(() => {
+                btn.innerHTML = '🎉 FREEDOM ACHIEVED 🎉';
+                btn.style.background = '#FFD700';
+                btn.style.color = '#B22234';
+                btn.style.transform = 'scale(1)';
+            }, 2000);
+        }
+        
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.innerHTML = ['🇺🇸', '🌶️', '🍽️', '🔥', '⭐'][Math.floor(Math.random() * 5)];
+            confetti.style.position = 'fixed';
+            confetti.style.top = '10%';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.fontSize = '2rem';
+            confetti.style.zIndex = '1000';
+            confetti.style.pointerEvents = 'none';
+            confetti.style.animation = 'confettiFall 3s ease-out forwards';
+            
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => {
+                document.body.removeChild(confetti);
+            }, 3000);
+        }
+        
+        // Add confetti animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes confettiFall {
+                to {
+                    transform: translateY(100vh) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Auto-advance slides every 15 seconds (optional)
+        // setInterval(nextSlide, 15000);
+    </script>
+</body>
+</html>
